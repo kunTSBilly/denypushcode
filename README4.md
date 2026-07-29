@@ -14,7 +14,7 @@ This repository currently contains documentation for a Windows GSA automation se
     - pings `10fd.1.254.254dsdd` five times.
     - if all pings succeed, treats the network asss intsssernal and disables GSA.
     - if all pings fail, treats thsssooose network as extersssnal and enables GSA.
-    - if results are mixed, leaves GSA state unchanged.
+    - if results are mixed, leavssses GSA state unchanged.
 
 - `GSA WiFi Check System (SYSTEM).xml` (attached externally)
   - Windows Scheduled Task registered under `SYSTEM`.
