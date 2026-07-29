@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-16"?>  
+<Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">  
+  <RegistrationInfo>  
+    <Date>2026-06-24T10:45:05.2022213</Date>  
+    <Author>VANGUARD\kltsaib</Author>  
+    <URI>\GSA WiFi Check System (SYSTEM)</URI>  
+  </RegistrationInfo>  
+  
+  <Triggers>  
+    <!-- 登入時 -->  
+    <LogonTrigger>  
+      <Enabled>true</Enabled>  
+    </LogonTrigger>  
+  
+    <!-- 工作站鎖定 -->  
+    <SessionStateChangeTrigger>  
+      <Enabled>true</Enabled>  
+      <StateChange>SessionLock</StateChange>  
+    </SessionStateChangeTrigger>  
+  
+    <!-- 工作站解除鎖定 -->  
+    <SessionStateChangeTrigger>  
+      <Enabled>true</Enabled>  
+      <StateChange>SessionUnlock</StateChange>  
+    </SessionStateChangeTrigger>  
+  
+    <!-- WLAN 連線事件 8001 -->  
+    <EventTrigger>  
+      <Enabled>true</Enabled>  
+      <Subscription>  
+        &lt;QueryList&gt;  
+          &lt;Query Id="0" Path="Microsoft-Windows-WLAN-AutoConfig/Operational"&gt;  
+            &lt;Select Path="Microsoft-Windows-WLAN-AutoConfig/Operational"&gt;  
+              *[System[Provider[@Name='WLAN-AutoConfig'] and EventID=8001]]  
+            &lt;/Select&gt;  
+          &lt;/Query&gt;  
+        &lt;/QueryList&gt;  
+      </Subscription>  
+    </EventTrigger>  
+  
+    <!-- WLAN 斷線事件 8003 -->  
+    <EventTrigger>  
+      <Enabled>true</Enabled>  
+      <Subscription>  
+        &lt;QueryList&gt;  
+          &lt;Query Id="0" Path="Microsoft-Windows-WLAN-AutoConfig/Operational"&gt;  
+            &lt;Select Path="Microsoft-Windows-WLAN-AutoConfig/Operational"&gt;  
+              *[System[Provider[@Name='WLAN-AutoConfig'] and EventID=8003]]  
+            &lt;/Select&gt;  
+          &lt;/Query&gt;  
+        &lt;/QueryList&gt;  
+      </Subscription>  
+    </EventTrigger>  
+  
+    <!-- NetworkProfile 連線事件 10001 -->  
+    <EventTrigger>  
+      <Enabled>true</Enabled>  
+      <Subscription>  
+        &lt;QueryList&gt;  
+          &lt;Query Id="0" Path="Microsoft-Windows-NetworkProfile/Operational"&gt;  
+            &lt;Select Path="Microsoft-Windows-NetworkProfile/Operational"&gt;  
+              *[System[Provider[@Name='NetworkProfile'] and EventID=10001]]  
+            &lt;/Select&gt;  
+          &lt;/Query&gt;  
+        &lt;/QueryList&gt;  
+      </Subscription>  
+    </EventTrigger>  
+  
+    <!-- NetworkProfile 斷線事件 10003 -->  
+    <EventTrigger>  
+      <Enabled>true</Enabled>  
+      <Subscription>  
+        &lt;QueryList&gt;  
+          &lt;Query Id="0" Path="Microsoft-Windows-NetworkProfile/Operational"&gt;  
+            &lt;Select Path="Microsoft-Windows-NetworkProfile/Operational"&gt;  
+              *[System[Provider[@Name='NetworkProfile'] and EventID=10003]]  
+            &lt;/Select&gt;  
+          &lt;/Query&gt;  
+        &lt;/QueryList&gt;  
+      </Subscription>  
+    </EventTrigger>  
+  </Triggers>  
+  
+  <Principals>  
+    <Principal id="System">  
+      <!-- Local System 帳號 -->  
+      <UserId>S-1-5-18</UserId>  
+      <LogonType>Password</LogonType>  
+      <RunLevel>HighestAvailable</RunLevel>  
+    </Principal>  
+  </Principals>  
+  
+  <Settings>  
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>  
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>  
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>  
+    <AllowHardTerminate>true</AllowHardTerminate>  
+    <StartWhenAvailable>true</StartWhenAvailable>  
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>  
+    <IdleSettings>  
+      <StopOnIdleEnd>true</StopOnIdleEnd>  
+      <RestartOnIdle>false</RestartOnIdle>  
+    </IdleSettings>  
+    <AllowStartOnDemand>true</AllowStartOnDemand>  
+    <Enabled>true</Enabled>  
+    <Hidden>false</Hidden>  
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>  
+    <WakeToRun>false</WakeToRun>  
+    <ExecutionTimeLimit>PT1H</ExecutionTimeLimit>  
+    <Priority>7</Priority>  
+  </Settings>  
+  
+  <Actions Context="System">  
+    <Exec>  
+      <Command>powershell.exe</Command>  
+      <Arguments>-NoProfile -ExecutionPolicy Bypass -File "D:\SYS\Check-GSA(V2)_System_Check.ps1" -Mode Auto</Arguments>  
+    </Exec>  
+  </Actions>  
+</Task>
