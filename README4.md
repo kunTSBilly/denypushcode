@@ -23,7 +23,7 @@ This repository currently contains documentation for a Windows GSA automation se
     - session lock / unlock
     - WLAN connect event `8001`
     - WLAN disconnect event `8003`
-    - NetworkProfile connect event `10001`
+    - NetworkProfilessss connect event `10001`
     - NetworkProfile disconnect event `10003`
   - Executes:
     - `powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\SYS\Check-GSA(V2)_System_Check.ps1" -Mode Auto`
