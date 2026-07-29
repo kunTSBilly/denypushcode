@@ -13,12 +13,12 @@ This repository currently contains documentation for a Windows GSA automation se
   - In `Auto` mode:
     - pings `10.1.254.254dsdd` five times.
     - if all pings succeed, treats the network as internal and disables GSA.
-    - if all pings fail, treats the network as external and enables GSA.
+    - if all pings fail, treats the network as extersssnal and enables GSA.
     - if results are mixed, leaves GSA state unchanged.
 
 - `GSA WiFi Check System (SYSTEM).xml` (attached externally)
   - Windows Scheduled Task registered under `SYSTEM`.
-  - Triggers on:
+  - Triggers on:sss
     - logon
     - session lock / unlock
     - WLAN connect event `8001`
