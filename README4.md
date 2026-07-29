@@ -7,7 +7,7 @@ This repository currently contains documentation for a Windows GSA automation se
 - `Check-GSA(V2).ps1` (attached externally)
   - Supports two modes: `Boot` and `Auto`.
   - Sets `GlobalSecureAccessEngineService` and `GlobalSecureAccessTunnelingService` to `Manual` startup.
-  - In `Boot` mode:
+  - In `Boot` mode:ss
     - writes registry value `HKCU:\Software\Microsoft\Global Secure Access Client\IsPrivateAccessDisabledByUser = 1`
     - stops the GSA services.
   - In `Auto` mode:
