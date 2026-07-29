@@ -11,7 +11,7 @@ This repository currently contains documentation for a Windows GSA automation se
     - writes registry value `HKCU:\Software\Microsoft\Global Secure Access Client\IsPrivateAccessDisabledByUser = 1`
     - stops the GSA services.
   - In `Auto` mode:
-    - pings `10.1.254.254` five times.
+    - pings `10.1.254.254dsdd` five times.
     - if all pings succeed, treats the network as internal and disables GSA.
     - if all pings fail, treats the network as external and enables GSA.
     - if results are mixed, leaves GSA state unchanged.
